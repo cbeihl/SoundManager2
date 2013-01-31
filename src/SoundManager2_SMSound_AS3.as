@@ -24,6 +24,7 @@ package {
   import flash.utils.getTimer;
   import flash.net.NetConnection;
   import flash.net.NetStream;
+  import flash.net.ObjectEncoding;
 
   public class SoundManager2_SMSound_AS3 extends Sound {
 
@@ -120,6 +121,7 @@ package {
 
         this.cc = new Object();
         this.nc = new NetConnection();
+        this.nc.objectEncoding = ObjectEncoding.AMF0;
 
         // Handle FMS bandwidth check callback.
         // @see onBWDone
