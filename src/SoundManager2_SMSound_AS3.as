@@ -157,6 +157,15 @@ package {
             this.ns.checkPolicyFile = this.checkPolicyFile;
             // bufferTime reference: http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/flash/net/NetStream.html#bufferTime
             this.ns.bufferTime = this.bufferTime; // set to 0.1 or higher. 0 is reported to cause playback issues with static files.
+            // requires Flash 10.1
+            if ((this.sm.flashVersionMajor == 10 && this.sm.flashVersionMinor >= 1) || this.sm.flashVersionMajor > 10) {
+                this.ns.bufferTimeMax = this.bufferTime;
+            }
+            // requires Flash 10.0
+            if (this.sm.flashVersionMajor >= 10) {
+                this.ns.maxPauseBufferTime = this.bufferTime;
+            }
+
             this.st = new SoundTransform();
             this.cc.onMetaData = this.metaDataHandler;
             this.cc.setCaption = this.captionHandler;
