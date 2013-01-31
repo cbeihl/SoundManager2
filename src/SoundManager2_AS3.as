@@ -26,6 +26,7 @@ package {
   import flash.media.SoundMixer;
   import flash.net.URLLoader;
   import flash.net.URLRequest;
+  import flash.system.Capabilities;
   import flash.system.Security;
   import flash.system.System;
   import flash.text.TextField;
@@ -42,6 +43,10 @@ package {
 
     public var version:String = "V2.97a.20130101";
     public var version_as:String = "(AS3/Flash 9)";
+
+    public var flashVersionStr:String;
+    public var flashVersionMajor:Number;
+    public var flashVersionMinor:Number;
 
     /**
      *  Cross-domain security options
@@ -97,6 +102,13 @@ package {
       // </d>
 
       flashDebug('SM2 SWF ' + version + ' ' + version_as);
+
+      this.flashVersionStr = Capabilities.version;
+      var osSplitArr:Array = this.flashVersionStr.split(' ');
+      var flashVerArr:Array = osSplitArr[1].split(',');
+      this.flashVersionMajor = Number(flashVerArr[0]);
+      this.flashVersionMinor = Number(flashVerArr[1]);
+      writeDebug('Detected Flash version : ' + this.flashVersionStr + ' ( ' + this.flashVersionMajor + '.' + this.flashVersionMinor + ' )');
 
       // context menu item with version info
 
