@@ -46,12 +46,15 @@
 
 -->
 
-<project name="SoundManager 2" default="build" basedir=".">
+<project name="SoundManager 2" default="zip" basedir=".">
 
   <property file='${basedir}/.build.properties'/>
   <property name='mxmlc' value='/Applications/mxmlc/bin/mxmlc'/>
   <property name='mtasc' value='/Applications/mtasc/mtasc'/>
   <property name='closure-compiler.jar' value="${user.home}/compiler.jar"/>
+
+  <property name='target.dir' location='${basedir}/target' />
+  <property name='target.zip.file' value='soundmanager2-V2.97a-20130101-tgi.zip' />
 
   <echo>${closure-compiler.jar}</echo>
   <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="${closure-compiler.jar}"/>
@@ -328,5 +331,14 @@
 
 <delete dir="tmp"/>
 
+</target>
+
+<target name="zip" depends="build">
+    <delete dir="${target.dir}" />
+    <mkdir dir="${target.dir}" />
+    <zip destfile="${target.dir}/${target.zip.file}">
+        <zipfileset dir="swf" prefix="swf" />
+        <zipfileset dir="script" prefix="js" />
+    </zip>
 </target>
 </project>
