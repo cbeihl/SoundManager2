@@ -339,6 +339,7 @@
     <zip destfile="${target.dir}/${target.zip.file}">
         <zipfileset dir="swf" prefix="swf" />
         <zipfileset dir="script" prefix="js" />
+        <zipfileset dir="troubleshoot" prefix="troubleshoot" />
     </zip>
 </target>
 </project>
