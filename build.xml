@@ -53,6 +53,7 @@
   <property name='mtasc' value='/Applications/mtasc/mtasc'/>
   <property name='closure-compiler.jar' value="${user.home}/compiler.jar"/>
 
+  <property name='swf.dir' location='${basedir}/swf' />
   <property name='target.dir' location='${basedir}/target' />
   <property name='target.zip.file' value='soundmanager2-V2.97a-20130101-tgi.zip' />
 
@@ -172,6 +173,8 @@
 <exec executable="perl">
     <arg line='-e "print qq($_: ), (stat $_)[7], qq(\n) for @ARGV" script/soundmanager2.js script/soundmanager2-jsmin.js script/soundmanager2-nodebug.js script/soundmanager2-nodebug-jsmin.js'/>
 </exec>
+
+<mkdir dir="${swf.dir}" />
 
 <echo>Building debug version, Flash 8/AS2...</echo>
 
