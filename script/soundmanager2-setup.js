@@ -6,7 +6,7 @@
  */
 
 soundManager.setup({
-    url: 'sm2/swf',
+    url: 'lib/soundmanager2/swf',
     flashVersion: 9,
     debugFlash: false,
     debugMode: false,
